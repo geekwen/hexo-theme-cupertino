@@ -1,14 +1,14 @@
-.hero {
+.blog-info {
     height: calc(100vh - 56px);
     display: grid;
     place-items: center;
 }
 
-.hero .group {
+.blog-info .group {
     width: 100%;
 }
 
-.hero .sub {
+.blog-info .sub {
     text-transform: uppercase;
     font-size: 24px;
     color: var(--black-4);
@@ -17,18 +17,29 @@
     transition: font-size 0.5s;
 }
 
-.hero .large {
-    font-size: 128px;
+.blog-info .description,
+.blog-info .hobbies {
+    font-size: 60px;
     color: var(--black-2);
     margin: 0;
+    padding: 10px 0;
     transition: font-size 0.5s;
 }
 
+.blog-info .hobbies {
+    font-size: 40px;
+    letter-spacing: 4px;
+}
+
 @media screen and (max-width: 800px) {
-    .hero .sub {
+    .blog-info .sub {
         font-size: 16px;
     }
-    .hero .large {
-        font-size: 84px;
+    .blog-info .description {
+        font-size: 45px;
+    }
+
+    .blog-info .hobbies {
+        font-size: 30px;
     }
 }
