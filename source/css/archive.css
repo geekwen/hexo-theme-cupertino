@@ -10,3 +10,25 @@
   margin-right: auto;
   padding: 0 16px;
 }
+
+.post-list.archives .post-year-group .year-title {
+  margin-top: 50px;
+  font-size: 2em;
+}
+
+.post-list.archives .post-year-group .post-list-item .no-image {
+  position: relative;
+  background-color: var(--white-1-opacity-8);
+}
+
+.post-list.archives .post-year-group .post-list-item .no-image::after {
+  content: attr(data-no-image-tips);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+  font-weight: normal;
+  opacity: 0.5;
+}

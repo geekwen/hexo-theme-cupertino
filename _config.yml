@@ -6,6 +6,9 @@ favicon: /favicon.png
 # the path to manifest.json
 manifest: /manifest.json
 
+# blog-info backgournd image url
+blog_info_bg: /images/desktop1.jpg
+
 # show excerpt on post list
 show_excerpt: false
 
@@ -57,7 +60,7 @@ nav:
     About: /about
     # these will be automatically be an icon
     GitHub: https://github.com/geekwen
-    Codepen: https://codepen.io/geekwen
+    CodePen: https://codepen.io/geekwen
     #Patreon: https://www.patreon.com/MrWillCom
     #Mastodon: https://noc.social/@MrWillCom
     #Discord: https://discord.gg/UKuFDjcfY8
