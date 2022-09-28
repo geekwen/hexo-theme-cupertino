@@ -30,8 +30,9 @@ a:visited {
 
 .container {
     max-width: 980px;
+    min-height: calc(100vh - 280px); /* make pages like: tags full screen */
     margin: auto;
-    padding: 0 16px;
+    padding: 0 20px;
 }
 
 .section-title {

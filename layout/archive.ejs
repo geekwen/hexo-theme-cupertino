@@ -25,21 +25,34 @@
             <% } %>
 
         <article class="post-list-item">
-            <a href="<%- url_for(post.path) %>">
-                <div class="cover-img <%= !post.theme_image && 'no-image' %>" data-no-image-tips="无图片">
-                <% if (post.theme_image) { %>
-                    <img src="<%= post.theme_image %>" alt="<%= post.theme_image_alt %>">
-                <% } %>
-                </div>
+            <div class="cover-img <%= !post.theme_image && 'no-image' %>" data-no-image-tips="无图片">
+            <% if (post.theme_image) { %>
+                <img src="<%= post.theme_image %>" alt="<%= post.theme_image_alt %>">
+            <% } %>
+            </div>
 
-                <div class="content">
-                    <% if (post.categories && post.categories.length && !is_category()) { %>
-                    <div class="categories<%= theme.uppercase_categories ? ' text-uppercase' : '' %>">
-                    <% post.categories.forEach((category) => { %>
-                        <span><%= category.name %></span>
+            <div class="content">
+                <% if (post.categories && post.categories.length && !is_category()) { %>
+                <div class="categories<%= theme.uppercase_categories ? ' text-uppercase' : '' %>">
+                <% post.categories.forEach((category) => { %>
+                    <span><%= category.name %></span>
+                <% }) %>
+                </div>
+                <% } %>
+
+                <% if (post.tags.length) { %>
+                <div class="tags<%= theme.uppercase_categories ? ' text-uppercase' : '' %>">
+                    <span>/</span>
+                    <% post.tags.forEach(function(tag){ %>
+                    <a href="<%= config.root %>tags/#<%= tag.name %>" title="<%= tag.name %>">
+                        <%= tag.name %>
+                    </a>
+                    <span>/</span>
                     <% }) %>
-                    </div>
-                    <% } %>
+                </div>
+                <% } %>
+
+                <a href="<%- url_for(post.path) %>">
                     <div class="title">
                         <%= post.title %>
                     </div>
@@ -53,8 +66,8 @@
                         <span>&nbsp;<%- post.date.date() %>,&nbsp;</span>
                         <span><%- post.date.year() %></span>
                     </div>
-                </div>
-            </a>
+                </a>
+            </div>
         </article>
         <% }) %>
     </div>

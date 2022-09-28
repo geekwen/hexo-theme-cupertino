@@ -4,6 +4,7 @@ body {
 
 .post {
   margin: 128px 0;
+  min-height: calc(100vh - 410px);
 }
 
 .meta .categories {
@@ -249,7 +250,7 @@ hr,
 }
 
 .content > h1 {
-  font-size: 36px;
+  font-size: 42px;
 }
 
 .content > h2 {
