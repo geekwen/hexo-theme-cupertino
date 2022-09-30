@@ -40,8 +40,10 @@ nav .nav-arrow {
 }
 
 nav .nav-items {
+    position: relative;
     float: right;
     text-align: right;
+    padding-right: 70px;
 }
 
 nav .nav-item {
@@ -157,6 +159,41 @@ body[data-color-scheme="dark"] nav .nav-item-search {
     background-image: url(/theme-img/search-light.svg);
 }
 
+nav .color-scheme-toggle-gap {
+    display: none;
+}
+
+nav .color-scheme-toggle {
+    display: inline-block;
+    border-radius: 16px;
+    border: 1px solid var(--blue);
+}
+
+nav .color-scheme-toggle label {
+    margin: 1px;
+}
+
+nav .color-scheme-toggle label input {
+    display: none;
+}
+
+nav .color-scheme-toggle label span {
+    display: inline-block; 
+    width: 36px;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 14px;
+    line-height: 18px;
+    color: var(--link);
+    text-align: center;
+    cursor: pointer;
+}
+
+/* nav .color-scheme-toggle label input:checked+span {
+    color: var(--white-txt-on-blue-bg);
+    background-color: var(--blue);
+} */
+
 @media screen and (max-width: 600px) {
     nav {
         height: 48px;
@@ -233,5 +270,67 @@ body[data-color-scheme="dark"] nav .nav-item-search {
     nav.open .nav-items {
         transform: translate(0, -0%);
         opacity: 1;
+    }
+
+    nav .color-scheme-toggle-gap {
+        display: block;
+    }
+
+    nav .color-scheme-toggle {
+        float: left;
+        clear: both;
+        margin: 10px 0 15px;
+        padding: 1px 0;
+    }
+
+    nav .color-scheme-toggle label span {
+        line-height: 20px;
+    }
+}
+
+@media screen and (min-width: 601px) {
+    nav .color-scheme-toggle {
+        position: absolute;
+        top: 11px;
+        right: 0;
+        height: 24px;
+        background-color: var(--white);
+        overflow: hidden;
+        transition: all 200ms ease;
+    }
+
+    nav .color-scheme-toggle label input:checked+span {
+        position: absolute;
+        top: 1px;
+        left: 1px;
+        z-index: 1;
+        opacity: 1;
+    }
+
+    nav .color-scheme-toggle:hover {
+        border-radius: 12px;
+        height: 88px;
+    }
+
+    nav .color-scheme-toggle:hover label span {
+        opacity: 1;
+    }
+
+    nav .color-scheme-toggle:hover input:checked+span {
+        position: relative;
+        top: auto;
+        left: auto;
+    }
+
+    nav .color-scheme-toggle label {
+        display: block;
+    }
+
+    nav .color-scheme-toggle label + label {
+        margin-top: 10px;
+    }
+
+    nav .color-scheme-toggle label span {
+        opacity: 0;
     }
 }

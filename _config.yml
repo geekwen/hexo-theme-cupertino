@@ -55,16 +55,16 @@ nav:
   # the items displays in the upper right corner
   items:
     # these items will display as a link
-    Archives: /archives
-    Tags: /tags
-    About: /about
+    文章: /archives
+    标签: /tags
+    关于: /about
     # these will be automatically be an icon
     GitHub: https://github.com/geekwen
     CodePen: https://codepen.io/geekwen
     #Patreon: https://www.patreon.com/MrWillCom
     #Mastodon: https://noc.social/@MrWillCom
     #Discord: https://discord.gg/UKuFDjcfY8
-    Search: /search
+    #Search: /search
 
 # footer items
 #footer:
