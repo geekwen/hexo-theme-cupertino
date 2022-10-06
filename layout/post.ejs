@@ -42,6 +42,14 @@
 
     <div class="divider"></div>
 
+    <%- toc(page.content, {list_number: false, max_depth: 3}) %>
+
+    <% if (page.theme_image) { %>
+    <div class="theme-image">
+        <div class="img" style="background-image: url(<%= page.theme_image %>)"></div>
+    </div>
+    <% } %>
+
     <div class="content">
         <%- page.content %>
     </div>

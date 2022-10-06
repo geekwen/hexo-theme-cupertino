@@ -1,20 +1,43 @@
-.toc > p {
-  margin: 0;
+.toc {
+  margin-top: -30px;
 }
 
-.toc > p > a {
-  color: var(--black-4);
-  text-decoration: none;
-  display: inline-block;
-  padding: 8px 0;
-  padding-left: 12px;
+.toc,
+.toc ol {
+  padding-left: 0;
+  list-style: none;
+}
+
+.toc a {
+  display: block;
+  padding: 8px 0 8px 20px;
   border-left: 1px solid var(--border-color);
   transition: color 0.2s, border-color 0.2s;
+  color: var(--black-4);
+  text-decoration: none;
 }
 
-.toc > p > a:hover,
-.toc > p > a:focus-visible {
+.toc a + ol a{
+  padding-left: 40px;
+}
+
+.toc a + ol a + ol a{
+  padding-left: 60px;
+}
+
+.toc a:hover,
+.toc a:focus-visible {
   color: var(--black);
   text-decoration: none;
   border-color: var(--black-2);
+}
+
+@media screen and (min-width: 801px) {
+  .toc {
+    float: left;
+    position: sticky;
+    top: 50px;
+    left: calc(50vw + 400px + 20px);
+    z-index: 100;
+  }
 }

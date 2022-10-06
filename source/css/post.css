@@ -7,6 +7,12 @@ body {
   min-height: calc(100vh - 410px);
 }
 
+@media screen and (max-width: 800px) {
+  .post {
+    margin-top: 40px;
+  }
+}
+
 .meta .categories {
   color: var(--link);
   margin-bottom: 6px;
@@ -28,6 +34,10 @@ body {
   font-size: 48px;
   margin-top: 16px;
   margin-bottom: 16px;
+}
+
+.container .meta .title {
+    padding: 0;
 }
 
 .content {
@@ -54,6 +64,7 @@ body {
 hr,
 .meta .title,
 .toc,
+.theme-image,
 .content blockquote,
 .content table,
 .content video,
@@ -190,6 +201,23 @@ hr,
 .content > .katex {
   display: block;
   text-align: center;
+}
+
+.theme-image {
+  margin-bottom: 40px;
+}
+
+.theme-image .img {
+  padding-bottom: 60%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.toc  + .theme-image{
+  margin-top: 40px;
 }
 
 .tags .tag {
