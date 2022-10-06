@@ -4,18 +4,6 @@
     <body
         data-page-index="<%= page.path == "index.html" %>"
         data-color-scheme="<%= theme.color_scheme %>"
-        data-uppercase-categories="<%= theme.uppercase_categories %>"
-        <% if (theme.rainbow_banner == true) { %>
-        data-rainbow-banner="<%= theme.rainbow_banner %>"
-        data-rainbow-banner-shown="<%= theme.rainbow_banner_shown %>"
-        data-rainbow-banner-month="<%= theme.rainbow_banner_month %>"
-        data-rainbow-banner-colors="<%= theme.rainbow_banner_colors %>"
-        <% } %>
-        data-config-root="<%- config.root %>"
-        <% if (theme.toc == true) { %>
-        data-toc="<%= theme.toc %>"
-        data-toc-max-depth="<%= theme.toc_max_depth %>"
-        <% } %>
         <% if (theme.search == true && page.type == 'search') { %>
         data-search-path="<%= theme.search_path %>"
         <% } %>
@@ -41,7 +29,7 @@
             window.addEventListener('load', () => {
                 ScrollReveal({ delay: 250, reset: true, easing: 'cubic-bezier(0, 0, 0, 1)' })
                 ScrollReveal().reveal('.post-list-item .cover-img img')
-                ScrollReveal().reveal('.post-list-item, .card, .content p img, .content .block-large img', { distance: '60px', origin: 'bottom', duration: 800 })
+                ScrollReveal().reveal('.post-list-item, .card, .content img, .content .block-large img', { distance: '60px', origin: 'bottom', duration: 800 })
             })
         </script>
         <% } %>
