@@ -11,7 +11,7 @@
             <% } %>
         </div>
         <span>
-            Copyright&copy; <%= date(new Date(), 'YYYY') %> <%= config.author || config.title %>
+            Copyright&copy; <%= date(new Date(), 'YYYY') %> <a href="<%= config.url %>"><%= config.author || config.title %></a>
             ,&nbsp;
             <%- __('powered_by', '<a href="http://hexo.io/" target="_blank">Hexo</a>') %>
         </span>

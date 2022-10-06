@@ -3,8 +3,8 @@ body {
 }
 
 .post {
-  margin: 128px 0;
-  min-height: calc(100vh - 410px);
+  margin: 128px auto;
+  min-height: calc(100vh - 358px);
 }
 
 @media screen and (max-width: 800px) {
@@ -70,6 +70,8 @@ hr,
 .content video,
 .content ul,
 .content ol,
+.content img,
+.content iframe,
 .content > mjx-container,
 .content > .katex,
 .about {
@@ -79,9 +81,17 @@ hr,
   padding: 0 16px;
 }
 
+.content iframe,
+.content img {
+  display: block;
+  margin-bottom: 18px;
+  padding: 0;
+}
+
+.content img,
 .content p img,
 .content .block-large img {
-  border-radius: 10px;
+  border-radius: var(--border-radius);
 }
 
 .content table,
@@ -212,7 +222,7 @@ hr,
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  border-radius: 12px;
+  border-radius: var(--border-radius);
   overflow: hidden;
 }
 
