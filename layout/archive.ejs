@@ -42,10 +42,9 @@
 
                 <% if (post.tags.length) { %>
                 <div class="tags<%= theme.uppercase_categories ? ' text-uppercase' : '' %>">
-                    <span>/</span>
                     <% post.tags.forEach(function(tag){ %>
-                    <a href="<%= config.root %>tags/<%= tag.name %>" title="<%= tag.name %>"><%= tag.name %></a>
-                    <span>/</span>
+                    <a href="<%= config.root %>tags/<%= tag.name %>" title="<%= tag.name %>">#<%= tag.name %></a>
+                    &nbsp;
                     <% }) %>
                 </div>
                 <% } %>

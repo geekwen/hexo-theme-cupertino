@@ -27,6 +27,7 @@ body {
 .meta .title {
   font-size: 48px;
   margin-top: 16px;
+  margin-bottom: 16px;
 }
 
 .content {
