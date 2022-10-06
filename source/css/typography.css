@@ -29,8 +29,9 @@ pre {
 }
 
 code {
-    font-size: 12px;
+    font-size: 14px;
     background-color: var(--white-1);
     padding: 2px 4px;
     border-radius: 4px;
+    vertical-align: middle;
 }

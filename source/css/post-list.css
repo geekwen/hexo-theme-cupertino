@@ -93,7 +93,11 @@
 .post-list-item .tags > * {
   font-size: 14px !important;
   color: var(--link) !important;
-  text-decoration: none;
+}
+
+.post-list-item .categories > a:hover,
+.post-list-item .tags > a:hover {
+  text-decoration: underline;
 }
 
 .post-list-item .excerpt {

@@ -44,9 +44,7 @@
                 <div class="tags<%= theme.uppercase_categories ? ' text-uppercase' : '' %>">
                     <span>/</span>
                     <% post.tags.forEach(function(tag){ %>
-                    <a href="<%= config.root %>tags/#<%= tag.name %>" title="<%= tag.name %>">
-                        <%= tag.name %>
-                    </a>
+                    <a href="<%= config.root %>tags/<%= tag.name %>" title="<%= tag.name %>"><%= tag.name %></a>
                     <span>/</span>
                     <% }) %>
                 </div>
@@ -62,9 +60,9 @@
                     </div>
                     <% } %>
                     <div class="time">
-                        <span><%= ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'][post.date.month()] %></span>
-                        <span>&nbsp;<%- post.date.date() %>,&nbsp;</span>
-                        <span><%- post.date.year() %></span>
+                        <span><%- post.date.year() %>&nbsp;/&nbsp;</span>
+                        <span><%= post.date.month() + 1 %>&nbsp;/&nbsp;</span>
+                        <span><%- post.date.date() %></span>
                     </div>
                 </a>
             </div>
