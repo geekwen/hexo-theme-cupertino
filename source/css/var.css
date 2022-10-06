@@ -33,6 +33,7 @@ body[data-color-scheme="auto"], body[data-color-scheme="light"] {
     --nav-arrow: #1d1d1f;
 
     --border-radius: 10px;
+    --content-v-gap: 24px;
 }
 
 @media (prefers-color-scheme: dark) {
