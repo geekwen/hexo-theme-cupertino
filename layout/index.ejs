@@ -1,53 +1,13 @@
 <div class="container">
     <% if (page.path == "index.html") { %>
-    <div class="blog-info">
-        <h2 class="sub"><%= config.subtitle %></h2>
-        <h2 class="description"><%= config.description %></h2>
-        <h2 class="hobbies"><%= config.hobbies %></h2>
-    </div>
+        <div class="blog-info">
+            <h2 class="sub"><%= config.subtitle %></h2>
+            <h2 class="description"><%= config.description %></h2>
+            <h2 class="hobbies"><%= config.hobbies %></h2>
+        </div>
 
-    <% if (theme.blog_info_bg) { %>
-    <div class="header-bg" style="background-image: url(<%= theme.blog_info_bg %>)"></div>
+        <% if (theme.blog_info_bg) { %>
+        <div class="header-bg" style="background-image: url(<%= theme.blog_info_bg %>)"></div>
+        <% } %>
     <% } %>
-
-    <!-- <h2 class="section-title"><%= __('latest_posts') %></h2> -->
-    <% } %>
-
-    <!-- <div class="post-list">
-        <% page.posts.each(function (post) { %>
-        <article class="post-list-item">
-            <a href="<%- url_for(post.path) %>">
-                <% if (post.theme_image) { %>
-                <div class="cover-img">
-                    <img src="<%= post.theme_image %>" alt="<%= post.theme_image_alt %>">
-                </div>
-                <% } %>
-                <div class="content">
-                    <% if (post.categories && post.categories.length) { %>
-                    <div class="categories<%= theme.uppercase_categories ? ' text-uppercase' : '' %>">
-                    <% post.categories.forEach((category) => { %>
-                        <span><%= category.name %></span>
-                    <% }) %>
-                    </div>
-                    <% } %>
-                    <div class="title">
-                        <%= post.title %>
-                    </div>
-                    <% if (theme.show_excerpt) { %>
-                    <div class="excerpt">
-                        <%- post.excerpt %>
-                    </div>
-                    <% } %>
-                    <div class="time">
-                        <span><%- post.date.year() %>&nbsp;/&nbsp;</span>
-                        <span><%= post.date.month() + 1 %>&nbsp;/&nbsp;</span>
-                        <span><%- post.date.date() %></span>
-                    </div>
-                </div>
-            </a>
-        </article>
-        <% }) %>
-    </div> -->
-
-    <!-- <%- partial('_partial/paginator') %> -->
 </div>
