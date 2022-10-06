@@ -2,6 +2,7 @@
 <html lang="<%= config.language %>">
     <%- partial('_partial/head') %>
     <body
+        data-page-index="<%= page.path == "index.html" %>"
         data-color-scheme="<%= theme.color_scheme %>"
         data-uppercase-categories="<%= theme.uppercase_categories %>"
         <% if (theme.rainbow_banner == true) { %>

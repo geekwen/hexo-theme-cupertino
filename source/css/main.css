@@ -9,6 +9,10 @@ body {
     font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
+body[data-page-index="true"] {
+    overflow: hidden;
+}
+
 a:link {
     color: var(--link);
     text-decoration: none;
@@ -29,9 +33,10 @@ a:visited {
 
 .container {
     max-width: 980px;
-    min-height: calc(100vh - 230px); /* make pages like: tags full screen */
+    min-height: calc(100vh - 102px); /* make pages like: tags full screen */
     margin: auto;
     padding: 0 20px;
+    overflow: hidden;
 }
 
 .section-title {

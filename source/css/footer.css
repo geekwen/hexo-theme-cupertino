@@ -6,11 +6,17 @@ footer {
     text-align: center;
 }
 
-.inner {
+body[data-page-index="true"] footer {
+    position: sticky;
+    left: 0;
+    bottom: 0;
+    z-index: 10;
+}
+
+footer .inner {
     max-width: 980px;
     margin: auto;
     padding: 16px;
-    opacity: 0.5;
     font-size: 14px;
 }
 

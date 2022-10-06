@@ -4,8 +4,11 @@
     margin: 32px auto;
 }
 
-.divider {
-    margin: 64px auto;
+@media screen and (min-width: 801px) {
+    .divider {
+        margin-top: 64px;
+        margin-bottom: 64px;
+    }
 }
 
 img {
@@ -31,6 +34,8 @@ pre {
 code {
     font-size: 14px;
     background-color: var(--white-1);
+    margin-left: 4px;
+    margin-right: 4px;
     padding: 2px 4px;
     border-radius: 4px;
     vertical-align: middle;

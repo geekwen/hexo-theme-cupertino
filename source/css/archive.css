@@ -2,6 +2,12 @@
   margin-top: 128px;
 }
 
+@media screen and (max-width: 800px) {
+  .meta {
+    margin-top: 70px; /* keep title in the same postion against the post title */
+  }
+}
+
 .meta .type {
   color: var(--grey);
   font-weight: 600;
@@ -9,6 +15,10 @@
   margin-left: auto;
   margin-right: auto;
   padding: 0 16px;
+}
+
+.post-list.archives {
+  margin-bottom: 50px;
 }
 
 .post-list.archives .post-year-group .year-title {
