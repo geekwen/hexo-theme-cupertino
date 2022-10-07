@@ -42,7 +42,7 @@ nav:
     # these items will display as a link
     文章: /archives
     标签: /tags
-    关于: /about
+    #关于: /about
     # these will be automatically be an icon
     GitHub: https://github.com/geekwen
     CodePen: https://codepen.io/geekwen

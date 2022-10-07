@@ -6,6 +6,10 @@
     transform: translate(-50%, -50%);
 }
 
+.blog-info a:hover {
+    text-decoration: none;
+}
+
 @media screen and (max-width: 800px) {
     .blog-info {
         min-width: 80%;
@@ -19,6 +23,28 @@
     font-weight: 100;
     margin: 0;
     transition: font-size 0.5s;
+}
+
+.blog-info .go-to-archives {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--black-4);
+    font-weight: 100;
+    transition: font-size 0.5s;
+}
+
+.blog-info .go-to-archives::after {
+    content: '➤';
+    display: inline-block;
+    vertical-align: text-bottom;
+    margin-left: 4px;
+    animation: back-forward 1s infinite;
+}
+
+@keyframes back-forward {
+    from { transform: translateX(0); }
+    50% { transform: translateX(5px); }
+    to { transform: translateX(0); }
 }
 
 .blog-info .description,

@@ -54,13 +54,16 @@
         <%- page.content %>
     </div>
 
-    <div class="about">
-        <div class="inner">
-            <h1><%= __('about_this_post') %></h1>
-            <div class="details">
-                <p><%- __('this_post_is_written_by', config.author) %>, <%- __('licensed_under', `<a href="${theme.license_link}">${theme.license}</a>`) %>.</p>
+    <% if (!page.no_copyright) { %>
+        <div class="about">
+            <div class="inner">
+                <h1><%= __('about_this_post') %></h1>
+                <div class="details">
+                    <p><%- __('this_post_is_written_by', config.author) %>，<%- __('licensed_under', `<a href="${theme.license_link}">${theme.license}</a>`) %>。</p>
+                    <p>本文完整路径为：<a href="<%= page.permalink %>"><%= page.permalink %></a></p>
+                </div>
             </div>
         </div>
-    </div>
+    <% } %>
 </article>
 <% } %>
