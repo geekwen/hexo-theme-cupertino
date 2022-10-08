@@ -17,7 +17,7 @@
         <% } %>
 
         <% if (page.tags && page.tags.length) { %>
-        <div class="categories tags<%= theme.capitalize_tags ? ' text-capitalize' : '' %>">
+        <div class="tags<%= theme.capitalize_tags ? ' text-capitalize' : '' %>">
             <%
                 var tags = ''
                 page.tags.forEach((tag) => {

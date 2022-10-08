@@ -1,4 +1,5 @@
 @charset 'utf-8';
+
 /**************************
  *        variables       *
  **************************/
@@ -702,7 +703,6 @@ body[data-page-index="true"] footer {
  **************************/
 
 .tags {
-  margin-bottom: 60px;
 
   >a {
     font-size: 14px;
@@ -711,11 +711,12 @@ body[data-page-index="true"] footer {
     &::before {
       content: '#';
     }
-
   }
 
   // tqg cloud page
   &.tag-cloud {
+    margin-bottom: 60px;
+
     >a {
       display: inline-block;
       margin: 4px;
@@ -1018,37 +1019,33 @@ body[data-page-index="true"] footer {
 
 .post-list {
   user-select: none;
-  display: grid;
   grid-template-columns: 1fr 1fr;
   max-width: 980px;
   margin: auto;
+  margin-bottom: 50px;
 
   @media screen and (max-width: 600px) {
-    display: block;
     max-width: 366px;
+  }
+}
+
+.post-year-group {
+  .year-title {
+    margin-top: 50px;
+    font-size: 2em;
   }
 }
 
 .post-list-item {
   overflow: hidden;
-  border-radius: 16px;
-  background-color: var(--card-bg);
-  margin-bottom: 21px;
+  display: flex;
+  align-items: center;
+  padding: 21px 0;
+  border-bottom: 1px solid var(--border-color);
   transition: all 200ms ease;
 
-  &:nth-child(2n-1) {
-    margin-right: 8px;
-  }
-
-  &:nth-child(2n) {
-    margin-left: 8px;
-  }
-
-  @media screen and (max-width: 600px) {
-    &:nth-child(n) {
-      margin-left: 0;
-      margin-right: 0;
-    }
+  &:last-child {
+    border-bottom: none;
   }
 
   .cover-img {
@@ -1056,6 +1053,7 @@ body[data-page-index="true"] footer {
     height: 120px;
     border-radius: 16px;
     overflow: hidden;
+    -webkit-mask-image: -webkit-radial-gradient(white, black); // https://discourse.webflow.com/t/overflow-hidden-round-corners-not-working-on-safari/67805/3
     flex-shrink: 0;
 
     @media screen and (max-width: 800px) {
@@ -1074,8 +1072,25 @@ body[data-page-index="true"] footer {
   }
 
   &:hover .cover-img img {
-    transform: scale(1.03);
+    transform: scale(1.05);
     filter: brightness(0.85);
+  }
+
+  .no-image {
+    position: relative;
+    background-color: var(--white-1-opacity-8);
+
+    &::after {
+      content: attr(data-no-image-tips);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 1;
+      transform: translate(-50%, -50%);
+      font-size: 14px;
+      font-weight: normal;
+      opacity: 0.5;
+    }
   }
 
   a,
@@ -1160,38 +1175,6 @@ body[data-page-index="true"] footer {
   }
 }
 
-/* in archive page, use a more compact list view */
-
-.post-list.archives {
-  display: block;
-  max-width: 980px;
-  margin: auto;
-
-  .post-list-item {
-    display: flex;
-    align-items: center;
-    border-radius: 0;
-    background-color: initial;
-    padding: 21px 0;
-    margin: 0;
-    border-bottom: 1px solid var(--border-color);
-    transition: all 200ms ease;
-
-    &:nth-child(n) {
-      margin-left: 0;
-      margin-right: 0;
-    }
-
-    &:last-child {
-      border-bottom: none;
-    }
-  }
-}
-
-/**************************
- *        post list       *
- **************************/
-
 .meta {
   margin-top: 128px;
 
@@ -1233,35 +1216,6 @@ body[data-page-index="true"] footer {
   }
 }
 
-.post-list.archives {
-  margin-bottom: 50px;
-
-  .post-year-group {
-    .year-title {
-      margin-top: 50px;
-      font-size: 2em;
-    }
-
-    .post-list-item .no-image {
-      position: relative;
-      background-color: var(--white-1-opacity-8);
-
-      &::after {
-        content: attr(data-no-image-tips);
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        z-index: 1;
-        transform: translate(-50%, -50%);
-        font-size: 14px;
-        font-weight: normal;
-        opacity: 0.5;
-      }
-    }
-  }
-}
-
-
 /**************************
  *          post          *
  **************************/
@@ -1270,9 +1224,9 @@ body[data-page-index="true"] footer {
   margin: 128px auto;
   min-height: calc(100vh - 358px);
 
-@media screen and (max-width: 800px) {
+  @media screen and (max-width: 800px) {
     margin-top: 40px;
-}
+  }
 
 }
 
@@ -1289,14 +1243,15 @@ body[data-page-index="true"] footer {
 .content h5,
 .content h6,
 .meta .categories,
+.meta .tags,
 .meta .date,
+.meta .title,
 .content figure,
 /* only `.content>pre`, do not include <pre /> in <figure /> */
 .content>pre,
 .divider,
 .container,
 hr,
-.meta .title,
 .toc,
 .theme-image,
 .content blockquote,
@@ -1521,7 +1476,7 @@ hr,
   }
 }
 
-.toc + .theme-image {
+.toc+.theme-image {
   margin-top: 40px;
 }
 
