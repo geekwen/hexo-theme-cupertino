@@ -21,7 +21,7 @@
             <%
                 var tags = ''
                 page.tags.forEach((tag) => {
-                    tags += `<a href="${config.root}${tag.path}" class="tag">#${tag.name}</a>&nbsp;&nbsp;`
+                    tags += `<a href="${config.root}${tag.path}" class="tag">${tag.name}</a>&nbsp;&nbsp;`
                 })
                 if (!theme.hashtag_prefix_before_tags) { tags = tags.slice(0, tags.length - 1) }
             %>

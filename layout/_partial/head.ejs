@@ -40,34 +40,5 @@
     <link rel='manifest' href='<%= theme.manifest %>'>
   <% } %>
 
-  <%- css('css/var') %>
   <%- css('css/main') %>
-  <%- css('css/typography') %>
-  <%- css('css/code-highlighting') %>
-  <%- css('css/components') %>
-  <%- css('css/nav') %>
-  <%- css('css/paginator') %>
-  <%- css('css/footer') %>
-  <%- css('css/post-list') %>
-  <% if (theme.toc) { %>
-  <%- css('css/toc') %>
-  <% } %>
-  <% if (page.path == "index.html") { %>
-  <%- css('css/index') %>
-  <% } %>
-  <% if (page.path != "index.html") { %>
-  <%- css('css/post') %>
-  <% } %>
-  <% if (is_archive() || is_category() || is_tag() || (theme.search == true && page.type == 'search') || page.type == 'tags' || page.type == 'categories') { %>
-  <%- css('css/archive') %>
-  <% } %>
-  <% if (theme.search == true && page.type == 'search') { %>
-  <%- css('css/search') %>
-  <% } %>
-  <% if (page.type == 'tags') { %>
-  <%- css('css/tags') %>
-  <% } %>
-  <% if (page.type == 'categories') { %>
-  <%- css('css/categories') %>
-  <% } %>
 </head>
