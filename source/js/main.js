@@ -114,35 +114,42 @@ const pagePlugins = new class {
       return;
     }
 
+    let setIntersectionObserver = function (classNames, callback, options) {
+      let elList = [].slice.call(document.querySelectorAll(classNames));
+      let observeInc = new IntersectionObserver(function (entries, observer) {
+        entries.forEach(function (entry) {
+          callback(entry, observeInc);
+        })
+      }, options || null)
+      elList.forEach(function (elItem) {
+        observeInc.observe(elItem);
+      });
+    }
+
     document.addEventListener("DOMContentLoaded", function () {
-      let lazyImages = [].slice.call(document.querySelectorAll(".post-list-item .cover-img img"));
+      // lazy load post list images
+      setIntersectionObserver(
+        ".post-list-item .cover-img img",
+        function (entry, observeInc) {
+          if (!entry.isIntersecting) return;
+          let imgEl = entry.target;
+          imgEl.src = imgEl.dataset.src;
+          imgEl.parentElement.classList.remove('no-image');
+          observeInc.unobserve(imgEl);
+        },
+      )
 
-      let lazyImageObserver = new IntersectionObserver(function (entries, observer) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) return;
-          let lazyImage = entry.target;
-          lazyImage.src = lazyImage.dataset.src;
-          lazyImage.parentElement.classList.remove('no-image');
-          lazyImageObserver.unobserve(lazyImage);
-        });
-      });
-
-      lazyImages.forEach(function (lazyImage) {
-        lazyImageObserver.observe(lazyImage);
-      });
-
-      let sliderItems = [].slice.call(document.querySelectorAll(".post-list-item, .year-title, .content img, .content iframe"));
-      let sliderObserver = new IntersectionObserver(function (entries, observer) {
-        entries.forEach(function (entry) {
+      // add view animation
+      setIntersectionObserver(
+        ".post-list-item, .year-title, .content img, .content iframe",
+        function (entry, observeInc) {
           if (!entry.isIntersecting) return;
           let sliderItem = entry.target;
           sliderItem.classList.add('view');
-          sliderObserver.unobserve(sliderItem);
-        })
-      }, { threshold: 0.3 })
-      sliderItems.forEach(function (sliderItem) {
-        sliderObserver.observe(sliderItem);
-      })
+          observeInc.unobserve(sliderItem);
+        },
+        { threshold: 0.3 }
+      )
     })
   }
 }
