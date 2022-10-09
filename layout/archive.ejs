@@ -25,9 +25,9 @@
             <% } %>
 
         <article class="post-list-item">
-            <div class="cover-img <%= !post.theme_image && 'no-image' %>" data-no-image-tips="无图片">
+            <div class="cover-img no-image" data-no-image-tips="无图片">
             <% if (post.theme_image) { %>
-                <img src="<%= post.theme_image %>" alt="<%= post.theme_image_alt %>">
+                <img src="" data-src="<%= post.theme_image %>" alt="<%= post.theme_image_alt %>">
             <% } %>
             </div>
 

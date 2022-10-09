@@ -4,7 +4,7 @@
 favicon: /favicon.png
 
 # the path to manifest.json
-manifest: /manifest.json
+# manifest: /manifest.json
 
 # blog-info backgournd image url
 blog_info_bg: /images/desktop1.jpg

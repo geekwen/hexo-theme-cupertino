@@ -22,30 +22,5 @@
     <% if (config.ackee) { %>
     <%- config.ackee %>
     <% } %>
-
-    <% if (theme.scroll_reveal) { %>
-    <%- js('js/scrollreveal.min.js') %>
-    <script>
-      window.addEventListener('load', () => {
-        ScrollReveal({
-          delay: 250,
-          easing: 'cubic-bezier(0, 0, 0, 1)'
-        })
-        ScrollReveal().reveal(
-          [
-            '.post-list-item',
-            '.year-title',
-            '.content img',
-            '.content iframe',
-          ].join(','),
-          {
-            distance: '40px',
-            origin: 'bottom',
-            duration: 800
-          }
-        )
-      })
-    </script>
-    <% } %>
   </body>
 </html>
