@@ -39,73 +39,31 @@ const pagePlugins = new class {
   }
 
   themeToggle() {
-    // a simple solution for managing cookies
-    const Cookies = new class {
-      get(key, fallback) {
-        const temp = document.cookie.split('; ').find(row => row.startsWith(key + '='))
-        if (temp) {
-          return temp.split('=')[1];
-        } else {
-          return fallback
-        }
-      }
-      set(key, value) {
-        document.cookie = key + '=' + value + '; path=' + document.body.getAttribute('data-config-root')
-      }
+    const KEY = 'data-color-scheme';
+    const THEME_LIST = ['auto', 'light', 'dark'];
+    const bodyEl = document.body;
+    let saveTheme = function (theme) {
+      if (!THEME_LIST.includes(theme)) theme = 'auto';
+      bodyEl.setAttribute(KEY, theme);
+      localStorage.setItem(KEY, theme);
     }
 
-    const ColorScheme = new class {
-      constructor() {
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { this.updateCurrent(Cookies.get('color-scheme', 'auto')) })
+    let current = localStorage.getItem(KEY);
+    saveTheme(current);
+    let inputElList = [].slice.call(document.querySelectorAll('#theme-nav input'));
+    inputElList.some(function (inputElItem) {
+      if (inputElItem.value === current) {
+        inputElItem.checked = true;
+        return true;
       }
-      get() {
-        const stored = Cookies.get('color-scheme', 'auto')
-        this.updateCurrent(stored)
-        return stored
-      }
-      set(value) {
-        bodyEl.setAttribute('data-color-scheme', value)
-        Cookies.set('color-scheme', value)
-        this.updateCurrent(value)
-        return value
-      }
-      updateCurrent(value) {
-        var current = 'light'
-        if (value == 'auto') {
-          if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            current = 'dark'
-          }
-        } else {
-          current = value
-        }
-        document.body.setAttribute('data-current-color-scheme', current)
-      }
-    }
+    })
 
-    if (document.getElementById('theme-color-scheme-toggle')) {
-      var bodyEl = document.body
-      var themeColorSchemeToggleEl = document.getElementById('theme-color-scheme-toggle')
-      var options = themeColorSchemeToggleEl.getElementsByTagName('input')
-
-      if (ColorScheme.get()) {
-        bodyEl.setAttribute('data-color-scheme', ColorScheme.get())
+    document.getElementById('theme-nav').addEventListener('click', function (event) {
+      let value = event.target.value;
+      if (THEME_LIST.includes(value)) {
+        saveTheme(value);
       }
-
-      for (const option of options) {
-        if (option.value == bodyEl.getAttribute('data-color-scheme')) {
-          option.checked = true
-        }
-        option.addEventListener('change', (ev) => {
-          var value = ev.target.value
-          ColorScheme.set(value)
-          for (const o of options) {
-            if (o.value != value) {
-              o.checked = false
-            }
-          }
-        })
-      }
-    }
+    })
   }
 
   intersectionObservers() {
