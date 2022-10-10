@@ -46,10 +46,11 @@ const pagePlugins = new class {
       if (!THEME_LIST.includes(theme)) theme = 'auto';
       bodyEl.setAttribute(KEY, theme);
       localStorage.setItem(KEY, theme);
+      return theme;
     }
 
     let current = localStorage.getItem(KEY);
-    saveTheme(current);
+    current = saveTheme(current);
     let inputElList = [].slice.call(document.querySelectorAll('#theme-nav input'));
     inputElList.some(function (inputElItem) {
       if (inputElItem.value === current) {
