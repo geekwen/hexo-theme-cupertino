@@ -655,19 +655,20 @@ body[data-page-index="true"] footer {
  *           toc          *
  **************************/
 .toc {
-
   &,
   ol {
     padding-left: 0;
     list-style: none;
   }
 
-  @media screen and (min-width: 801px) {
+  @media screen and (min-width: 1200px) {
     float: left;
+    width: 200px;
     position: sticky;
     top: 50px;
-    left: calc(50vw + 400px + 20px);
+    left: calc(50vw + 400px);
     z-index: 100;
+    transform: translateX(20px);
   }
 
   a {
@@ -677,6 +678,7 @@ body[data-page-index="true"] footer {
     transition: color 0.2s, border-color 0.2s;
     color: var(--black-4);
     text-decoration: none;
+    word-break: break-all;
   }
 
   a:hover,
