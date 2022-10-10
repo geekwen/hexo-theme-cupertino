@@ -65,5 +65,28 @@
             </div>
         </div>
     <% } %>
+
+    <div class="divider"></div>
+
+    <section class="post-footer">
+        <div class="post-context">
+            <% if (page.prev) { %>
+              <p>
+                <span>上一篇：</span>
+                <a href="/<%= page.prev.path %>"><%= page.prev.title %></a>
+              </p>
+            <% } %>
+            <% if (page.next) { %>
+              <p>
+                <span>下一篇：</span>
+                <a href="/<%= page.next.path %>"><%= page.next.title %></a>
+              </p>
+            <% } %>
+        </div>
+
+        <div class="actions">
+          <button class="back-to-top">回到顶部</button>
+        </div>
+    </section>
 </article>
 <% } %>

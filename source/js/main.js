@@ -3,6 +3,7 @@ const pagePlugins = new class {
     this.navToggle();
     this.themeToggle();
     this.intersectionObservers();
+    this.backToTop();
   }
 
   navToggle () {
@@ -109,6 +110,15 @@ const pagePlugins = new class {
         },
         { threshold: 0.3 }
       )
+    })
+  }
+
+  backToTop () {
+    document.body.addEventListener('click', function (event) {
+      if (event.target.classList.contains('back-to-top')) {
+        console.log('clicked');
+        document.body.parentElement.scrollTop = 0;
+      }
     })
   }
 }

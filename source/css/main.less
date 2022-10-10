@@ -795,7 +795,7 @@ body[data-page-index="true"] footer {
 }
 
 /**************************
- *         layouts        *
+ *       index page       *
  **************************/
 
 .blog-info {
@@ -926,6 +926,52 @@ body[data-page-index="true"] footer {
   .no-results {
     color: var(--grey);
     text-align: center;
+  }
+}
+
+/**************************
+ *       side tools       *
+ **************************/
+ #side-tools {
+  position: fixed;
+  right: 40px;
+  bottom: 80px;
+  z-index: 100;
+
+  .tool-item {
+    display: block;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--white-2);
+    background-color: var(--white-1);
+    cursor: pointer;
+
+    &.back-to-top {
+      &::before,
+      &::after {
+        content: '';
+        width: 12px;
+        height: 1px;
+        position: absolute;
+        top: 14px;
+        z-index: 10;
+        background-color: var(--nav-arrow);
+      }
+      
+      &::before {
+        right: 50%;
+        transform-origin: 100% 0;
+        transform: rotate(-40deg) scaleY(1.5);
+      }
+
+      &::after {
+        left: 50%;
+        transform-origin: 0% 0%;
+        transform: rotate(40deg) scaleY(1.5);
+      }
+    }
   }
 }
 
@@ -1291,7 +1337,8 @@ hr,
 .content iframe,
 .content>mjx-container,
 .content>.katex,
-.about {
+.about,
+.post-footer {
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
@@ -1527,4 +1574,59 @@ hr,
   .details p {
     margin: 6px 0;
   }
+}
+
+.post-footer {
+  display: block;
+
+  @media screen and (min-width: 601px) {
+    display: flex;
+    align-items: center;
+
+    .post-context {
+      flex: 1;
+    }
+  }
+
+  .post-context {
+    p {
+      display: flex;
+
+      a {
+        flex: 1px;
+      }
+    }
+  }
+
+  .actions {
+    @media screen and (max-width: 600px) {
+      margin-top: 50px;
+      text-align: center;
+    }
+  }
+
+  .back-to-top {
+    background-color: transparent;
+    border: none;
+    color: var(--black-4);
+    font-size: inherit;
+    cursor: pointer;
+
+    &::after {
+      content: '▲';
+      display: inline-block;
+      margin-left: 4px;
+      vertical-align: text-bottom;
+    }
+
+    &:hover::after {
+      animation: flip 400ms ease infinite;
+    }
+  }
+}
+
+@keyframes flip {
+  from {  transform: rotateY(0deg); }
+  50% {  transform: rotateY(90deg); }
+  to {  transform: rotateY(0deg); }
 }
