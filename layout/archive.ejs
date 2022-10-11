@@ -11,61 +11,67 @@
     <div class="divider"></div>
 
     <div class="post-list archives">
-        <% let currentYear %>
+        <% let currentYear, yearCount = {} %>
         <% page.posts.each(function (post) { %>
             <% if (currentYear !== post.date.year()) { %>
                 <% if (currentYear) { %>
                 </section>
                 <% } %>
 
-                <% currentYear = post.date.year() %>
+                <% currentYear = post.date.year();  %>
 
                 <section class="post-year-group">
-                    <h2 class="year-title"><%= post.date.year() %></h2>
+                    <h2 id="<%= post.date.year() %>" class="year-title">
+                        <a href="#<%= post.date.year() %>">#</a>
+                        <%= post.date.year() %>
+                    </h2>
             <% } %>
 
-        <article class="post-list-item">
-            <div class="cover-img no-image" data-no-image-tips="无图片">
-            <% if (post.theme_image) { %>
-                <img src="" data-src="<%= post.theme_image %>" alt="<%= post.theme_image_alt %>">
-            <% } %>
-            </div>
+            <% if (typeof yearCount[currentYear] !== 'number') yearCount[currentYear] = 0 %>
+            <% yearCount[currentYear] += 1; %>
 
-            <div class="content">
-                <% if (post.categories && post.categories.length && !is_category()) { %>
-                <div class="categories<%= theme.uppercase_categories ? ' text-uppercase' : '' %>">
-                <% post.categories.forEach((category) => { %>
-                    <span><%= category.name %></span>
-                <% }) %>
-                </div>
+            <article class="post-list-item">
+                <div class="cover-img no-image" data-no-image-tips="无图片">
+                <% if (post.theme_image) { %>
+                    <img src="" data-src="<%= post.theme_image %>" alt="<%= post.theme_image_alt %>">
                 <% } %>
+                </div>
 
-                <% if (post.tags.length) { %>
-                <div class="tags<%= theme.uppercase_categories ? ' text-uppercase' : '' %>">
-                    <% post.tags.forEach(function(tag){ %>
-                    <a href="<%= config.root %>tags/<%= tag.name %>" title="<%= tag.name %>"><%= tag.name %></a>
-                    &nbsp;
+                <div class="content">
+                    <% if (post.categories && post.categories.length && !is_category()) { %>
+                    <div class="categories<%= theme.uppercase_categories ? ' text-uppercase' : '' %>">
+                    <% post.categories.forEach((category) => { %>
+                        <span><%= category.name %></span>
                     <% }) %>
-                </div>
-                <% } %>
-
-                <a href="<%- url_for(post.path) %>">
-                    <div class="title">
-                        <%= post.title %>
-                    </div>
-                    <% if (theme.show_excerpt) { %>
-                    <div class="excerpt">
-                        <%- post.excerpt %>
                     </div>
                     <% } %>
-                    <div class="time">
-                        <span><%- post.date.year() %>&nbsp;/&nbsp;</span>
-                        <span><%= post.date.month() + 1 %>&nbsp;/&nbsp;</span>
-                        <span><%- post.date.date() %></span>
+
+                    <% if (post.tags.length) { %>
+                    <div class="tags<%= theme.uppercase_categories ? ' text-uppercase' : '' %>">
+                        <% post.tags.forEach(function(tag){ %>
+                        <a href="<%= config.root %>tags/<%= tag.name %>" title="<%= tag.name %>"><%= tag.name %></a>
+                        &nbsp;
+                        <% }) %>
                     </div>
-                </a>
-            </div>
-        </article>
+                    <% } %>
+
+                    <a href="<%- url_for(post.path) %>">
+                        <div class="title">
+                            <%= post.title %>
+                        </div>
+                        <% if (theme.show_excerpt) { %>
+                        <div class="excerpt">
+                            <%- post.excerpt %>
+                        </div>
+                        <% } %>
+                        <div class="time">
+                            <span><%- post.date.year() %>&nbsp;/&nbsp;</span>
+                            <span><%= post.date.month() + 1 %>&nbsp;/&nbsp;</span>
+                            <span><%- post.date.date() %></span>
+                        </div>
+                    </a>
+                </div>
+            </article>
         <% }) %>
     </div>
 </div>

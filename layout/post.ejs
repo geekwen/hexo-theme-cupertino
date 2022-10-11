@@ -6,87 +6,94 @@
     <%- partial('_partial/categories') %>
 <% } else { %>
 <article class="post">
-    <div class="meta">
-        <% if (page.categories && page.categories.length) { %>
-        <div class="categories<%= theme.uppercase_categories ? ' text-uppercase' : '' %>">
-        <% page.categories.forEach((category) => { %>
-            <a href="<%= config.root + category.path %>"><%= category.name %></a>
-            &nbsp;&nbsp;
-        <% }) %>
+    <div class="post-inner">
+        <div class="meta">
+            <% if (page.categories && page.categories.length) { %>
+            <div class="categories<%= theme.uppercase_categories ? ' text-uppercase' : '' %>">
+            <% page.categories.forEach((category) => { %>
+                <a href="<%= config.root + category.path %>"><%= category.name %></a>
+                &nbsp;&nbsp;
+            <% }) %>
+            </div>
+            <% } %>
+
+            <% if (page.tags && page.tags.length) { %>
+            <div class="tags<%= theme.capitalize_tags ? ' text-capitalize' : '' %>">
+                <%
+                    var tags = ''
+                    page.tags.forEach((tag) => {
+                        tags += `<a href="${config.root}${tag.path}" class="tag">${tag.name}</a>&nbsp;&nbsp;`
+                    })
+                    if (!theme.hashtag_prefix_before_tags) { tags = tags.slice(0, tags.length - 1) }
+                %>
+                <%- tags %>
+            </div>
+            <% } %>
+
+            <h2 class="title"><%= page.title %></h2>
+
+            <% if (!page.no_date) { %>
+            <div class="date" id="date">
+                <span><%- page.date.year() %>&nbsp;/&nbsp;</span>
+                <span><%= page.date.month() + 1 %>&nbsp;/&nbsp;</span>
+                <span><%- page.date.date() %></span>
+            </div>
+            <% } %>
+        </div>
+
+        <div class="divider"></div>
+
+        <%- toc(page.content, {list_number: false, max_depth: 3}) %>
+
+        <% if (page.theme_image && !page.theme_image_hide_in_post) { %>
+        <div class="theme-image">
+            <div class="img" style="background-image: url(<%= page.theme_image %>)"></div>
         </div>
         <% } %>
 
-        <% if (page.tags && page.tags.length) { %>
-        <div class="tags<%= theme.capitalize_tags ? ' text-capitalize' : '' %>">
-            <%
-                var tags = ''
-                page.tags.forEach((tag) => {
-                    tags += `<a href="${config.root}${tag.path}" class="tag">${tag.name}</a>&nbsp;&nbsp;`
-                })
-                if (!theme.hashtag_prefix_before_tags) { tags = tags.slice(0, tags.length - 1) }
-            %>
-            <%- tags %>
+        <div class="content">
+            <%- page.content %>
         </div>
-        <% } %>
 
-        <h2 class="title"><%= page.title %></h2>
-
-        <% if (!page.no_date) { %>
-        <div class="date" id="date">
-            <span><%- page.date.year() %>&nbsp;/&nbsp;</span>
-            <span><%= page.date.month() + 1 %>&nbsp;/&nbsp;</span>
-            <span><%- page.date.date() %></span>
-        </div>
-        <% } %>
-    </div>
-
-    <div class="divider"></div>
-
-    <%- toc(page.content, {list_number: false, max_depth: 3}) %>
-
-    <% if (page.theme_image) { %>
-    <div class="theme-image">
-        <div class="img" style="background-image: url(<%= page.theme_image %>)"></div>
-    </div>
-    <% } %>
-
-    <div class="content">
-        <%- page.content %>
-    </div>
-
-    <% if (!page.no_copyright) { %>
-        <div class="about">
-            <div class="inner">
-                <h1><%= __('about_this_post') %></h1>
-                <div class="details">
-                    <p><%- __('this_post_is_written_by', config.author) %>，<%- __('licensed_under', `<a href="${theme.license_link}">${theme.license}</a>`) %>。</p>
-                    <p>本文完整路径为：<a href="<%= page.permalink %>"><%= page.permalink %></a></p>
+        <% if (!page.no_copyright) { %>
+            <div class="about">
+                <div class="inner">
+                    <h1><%= __('about_this_post') %></h1>
+                    <div class="details">
+                        <p><%- __('this_post_is_written_by', config.author) %>，<%- __('licensed_under', `<a href="${theme.license_link}">${theme.license}</a>`) %>。</p>
+                        <p>本文完整路径为：<a href="<%= page.permalink %>"><%= page.permalink %></a></p>
+                    </div>
                 </div>
             </div>
-        </div>
-    <% } %>
+        <% } %>
 
-    <div class="divider"></div>
+        <% if (is_post()) { %>
+            <div class="divider"></div>
 
-    <section class="post-footer">
-        <div class="post-context">
-            <% if (page.prev) { %>
-              <p>
-                <span>上一篇：</span>
-                <a href="/<%= page.prev.path %>"><%= page.prev.title %></a>
-              </p>
-            <% } %>
-            <% if (page.next) { %>
-              <p>
-                <span>下一篇：</span>
-                <a href="/<%= page.next.path %>"><%= page.next.title %></a>
-              </p>
-            <% } %>
-        </div>
+            <section class="post-footer">
+                <div class="post-context">
+                    <% if (page.prev) { %>
+                    <p>
+                        <span>上一篇：</span>
+                        <a href="/<%= page.prev.path %>"><%= page.prev.title %></a>
+                    </p>
+                    <% } %>
+                    <% if (page.next) { %>
+                    <p>
+                        <span>下一篇：</span>
+                        <a href="/<%= page.next.path %>"><%= page.next.title %></a>
+                    </p>
+                    <% } %>
+                </div>
 
-        <div class="actions">
-          <button class="back-to-top">回到顶部</button>
-        </div>
-    </section>
+                <div class="actions">
+                <button class="back-to-top">回到顶部</button>
+                </div>
+            </section>
+        <% } %>
+    </div>
+    <aside class="post-aside">
+        <%- toc(page.content, {list_number: false, max_depth: 3}) %>
+    </aside>
 </article>
 <% } %>

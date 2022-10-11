@@ -4,6 +4,7 @@
  *        variables       *
  **************************/
 body {
+  --content-width: 700px;
   --border-radius: 10px;
   --content-v-gap: 24px;
 }
@@ -164,10 +165,6 @@ hr {
   }
 }
 
-img {
-  width: 100%;
-}
-
 ::marker {
   color: var(--black-4);
 }
@@ -200,7 +197,7 @@ code {
  **************************/
 
 .container {
-  max-width: 980px;
+  max-width: var(--content-width);
   min-height: calc(100vh - 102px);
   /* make pages like: tags full screen */
   margin: auto;
@@ -236,7 +233,7 @@ nav {
   transition: height 0.8s cubic-bezier(0.86, 0, 0.07, 1);
 
   >.inner {
-    max-width: 980px;
+    max-width: var(--content-width);
     margin: auto;
     padding: 0 16px;
   }
@@ -601,7 +598,7 @@ footer {
   text-align: center;
 
   .inner {
-    max-width: 980px;
+    max-width: var(--content-width);
     margin: auto;
     padding: 16px;
     font-size: 14px;
@@ -662,13 +659,7 @@ body[data-page-index="true"] footer {
   }
 
   @media screen and (min-width: 1200px) {
-    float: left;
-    width: 200px;
-    position: sticky;
-    top: 50px;
-    left: calc(50vw + 400px);
-    z-index: 100;
-    transform: translateX(20px);
+    display: none;
   }
 
   a {
@@ -720,7 +711,7 @@ body[data-page-index="true"] footer {
       display: inline-block;
       margin: 4px;
       padding: 8px 16px;
-      border-radius: 980px;
+      border-radius: 20px;
       background-color: var(--white);
       border: 1px solid var(--border-color);
     }
@@ -934,6 +925,7 @@ body[data-page-index="true"] footer {
 /**************************
  *       side tools       *
  **************************/
+
  #side-tools {
   position: fixed;
   right: 40px;
@@ -1065,7 +1057,7 @@ body[data-page-index="true"] footer {
 .post-list {
   user-select: none;
   grid-template-columns: 1fr 1fr;
-  max-width: 980px;
+  max-width: var(--content-width);
   margin: auto;
   margin-bottom: 50px;
 
@@ -1126,7 +1118,7 @@ body[data-page-index="true"] footer {
 
   .no-image {
     position: relative;
-    background-color: var(--white-1-opacity-8);
+    background: var(--white-1-opacity-8);
 
     &::after {
       content: attr(data-no-image-tips);
@@ -1297,13 +1289,44 @@ body[data-page-index="true"] footer {
  **************************/
 
 .post {
-  margin: 128px auto;
-  min-height: calc(100vh - 358px);
+  min-height: calc(100vh - 166px);
+  margin: 0 auto 64px;
+  padding: 0 var(--content-v-gap);
 
   @media screen and (max-width: 800px) {
     margin-top: 40px;
   }
 
+  .post-aside {
+    display: none;
+  }
+
+  @media screen and (min-width: 1200px) {
+    display: flex;
+    max-width: calc(var(--content-width) + 320px);
+    margin-left: calc((100vw - var(--content-width)) / 2 - var(--content-v-gap));
+
+    > .post-inner {
+      width: var(--content-width);
+    }
+
+    > .post-aside {
+      display: block;
+      width: 320px;
+      padding-top: 328px;
+      padding-left: 40px;
+
+      .toc {
+        display: block;
+        position: sticky;
+        top: 50px;
+        left: 0;
+        z-index: 10;
+        max-height: calc(100vh - 120px);
+        overflow: auto;
+      }
+    }
+  }
 }
 
 .container .meta .type,
@@ -1311,47 +1334,11 @@ body[data-page-index="true"] footer {
   padding: 0;
 }
 
-.content p,
-.content h1,
-.content h2,
-.content h3,
-.content h4,
-.content h5,
-.content h6,
-.meta .categories,
-.meta .tags,
-.meta .date,
-.meta .title,
-.content figure,
-/* only `.content>pre`, do not include <pre /> in <figure /> */
-.content>pre,
-.divider,
-.container,
-hr,
-.toc,
-.theme-image,
-.content blockquote,
-.content table,
-.content video,
-.content ul,
-.content ol,
-.content img,
-.content iframe,
-.content>mjx-container,
-.content>.katex,
-.about,
-.post-footer {
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 var(--content-v-gap);
-}
-
 .content {
-  font-size: 18px;
-  line-height: 1.5;
+  font-size: 16px;
+  line-height: 1.55;
   font-weight: 400;
-  letter-spacing: 0.012em;
+  letter-spacing: 0.05em;
 
   h1,
   h2,
@@ -1406,6 +1393,7 @@ hr,
   iframe,
   img {
     display: block;
+    max-width: 100%;
     margin-bottom: 18px;
     padding: 0;
   }

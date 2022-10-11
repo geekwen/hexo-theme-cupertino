@@ -36,7 +36,7 @@ scroll_reveal: true
 # navigation config
 nav:
   # the title displays in the upper left corner which won't change
-  title: Blog
+  title: Will's Blog
   # the items displays in the upper right corner
   items:
     # these items will display as a link
