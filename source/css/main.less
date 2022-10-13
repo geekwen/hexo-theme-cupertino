@@ -37,7 +37,7 @@ body[data-color-scheme="light"] {
   --footer-link-grey: #515154;
 
   --body-bg: #fbfbfd;
-  --card-bg: #fff;
+  --card-bg: #e6e6e6;
   --card-title: #1d1d1f;
   --card-time: #6e6e73;
   --date-txt: #6e6e73;
@@ -53,7 +53,7 @@ body[data-color-scheme="dark"] {
   --white-2: rgb(51, 51, 51);
 
   --black: #fff;
-  --black-2: rgb(204, 204, 204);
+  --black-2: rgb(206, 206, 206);
   --black-4: rgb(153, 153, 153);
 
   --border-color: #8884;
@@ -88,7 +88,7 @@ body[data-color-scheme="dark"] {
     --white-2: rgb(51, 51, 51);
   
     --black: #fff;
-    --black-2: rgb(204, 204, 204);
+    --black-2: rgb(206, 206, 206);
     --black-4: rgb(153, 153, 153);
   
     --border-color: #8884;
@@ -970,7 +970,7 @@ body[data-page-index="true"] footer {
 }
 
 /**************************
- *     code hightlight    *
+ *     code highlight    *
  **************************/
 
 /* This Code Highlighting Theme is based on GitHub Theme */
@@ -1404,6 +1404,13 @@ body[data-page-index="true"] footer {
     border-radius: var(--border-radius);
   }
 
+  img.has-info + p {
+    width: 80%;
+    margin: -10px auto 40px;
+    opacity: 0.7;
+    text-align: center;
+  }
+
   table,
   video {
     display: block;
@@ -1412,7 +1419,7 @@ body[data-page-index="true"] footer {
   table {
     padding: 0;
     border-collapse: collapse;
-    border-radius: 15px;
+    border-radius: var(--border-radius);
     max-width: 800px;
     overflow-x: auto;
   }
@@ -1426,11 +1433,11 @@ body[data-page-index="true"] footer {
       }
 
       th:first-child {
-        border-top-left-radius: 15px;
+        border-top-left-radius: var(--border-radius);
       }
 
       th:last-child {
-        border-top-right-radius: 15px;
+        border-top-right-radius: var(--border-radius);
       }
     }
 
@@ -1446,11 +1453,11 @@ body[data-page-index="true"] footer {
 
     tbody tr:last-child td {
       &:first-child {
-        border-bottom-left-radius: 15px;
+        border-bottom-left-radius: var(--border-radius);
       }
 
       &:last-child {
-        border-bottom-right-radius: 15px;
+        border-bottom-right-radius: var(--border-radius);
       }
     }
 
@@ -1474,11 +1481,12 @@ body[data-page-index="true"] footer {
 
   .highlight,
   >pre {
+    max-width: calc(800px - 16px * 2);
+    margin: 0;
     overflow-x: auto;
     overflow-y: hidden;
     background-color: var(--card-bg);
     border-radius: 15px;
-    max-width: calc(800px - 16px * 2);
 
     @media screen and (max-width: 800px) {
       border-radius: 0;
@@ -1620,3 +1628,11 @@ body[data-page-index="true"] footer {
   50% {  transform: rotateY(90deg); }
   to {  transform: rotateY(0deg); }
 }
+
+/**************************
+ *        function        *
+ **************************/
+
+ .text-center {
+  text-align: center;
+ }

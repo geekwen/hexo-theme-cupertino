@@ -89,7 +89,7 @@ const pagePlugins = new class {
     document.addEventListener("DOMContentLoaded", function () {
       // lazy load post list images
       setIntersectionObserver(
-        ".post-list-item .cover-img img",
+        ".post-list-item .cover-img img, .content img.lazy-load",
         function (entry, observeInc) {
           if (!entry.isIntersecting) return;
           let imgEl = entry.target;
