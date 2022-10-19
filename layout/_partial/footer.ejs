@@ -18,5 +18,11 @@
         <% if (theme.footer_extra_description) { %>
         <span class="footer-extra-description"><%- theme.footer_extra_description %></span>
         <% } %>
+        <% if (theme.beian_number) { %>
+        <br/>
+        <span>
+            <a href="https://beian.miit.gov.cn/" target="_blank"><%= theme.beian_number %></a>
+        </span>
+        <% } %>
     </div>
 </footer>

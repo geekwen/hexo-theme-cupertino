@@ -198,7 +198,7 @@ code {
 
 .container {
   max-width: var(--content-width);
-  min-height: calc(100vh - 102px);
+  min-height: calc(100vh - 104px);
   /* make pages like: tags full screen */
   margin: auto;
   padding: 0 20px;
@@ -600,8 +600,8 @@ footer {
   .inner {
     max-width: var(--content-width);
     margin: auto;
-    padding: 16px;
-    font-size: 14px;
+    padding: 10px;
+    font-size: 12px;
   }
 
   .links {
@@ -1289,9 +1289,11 @@ body[data-page-index="true"] footer {
  **************************/
 
 .post {
-  min-height: calc(100vh - 166px);
+  max-width: var(--content-width);
+  min-height: calc(100vh - 168px);
   margin: 0 auto 64px;
   padding: 0 var(--content-v-gap);
+  overflow: auto;
 
   @media screen and (max-width: 800px) {
     margin-top: 40px;
@@ -1301,9 +1303,11 @@ body[data-page-index="true"] footer {
     display: none;
   }
 
+  --side-bar-width: 320px;
+
   @media screen and (min-width: 1200px) {
     display: flex;
-    max-width: calc(var(--content-width) + 320px);
+    max-width: calc(var(--content-width) + var(--side-bar-width));
     margin-left: calc((100vw - var(--content-width)) / 2 - var(--content-v-gap));
 
     > .post-inner {
@@ -1312,7 +1316,7 @@ body[data-page-index="true"] footer {
 
     > .post-aside {
       display: block;
-      width: 320px;
+      width: var(--side-bar-width);
       padding-top: 328px;
       padding-left: 40px;
 

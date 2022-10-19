@@ -12,6 +12,9 @@ blog_info_bg: /images/desktop1.jpg
 # show excerpt on post list
 show_excerpt: false
 
+# beian number 备案号
+beian_number: 湘ICP备2022021870号
+
 # light/dark/auto color scheme
 color_scheme: auto
 
